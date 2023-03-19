@@ -194,6 +194,7 @@ public class DiaryService {
      * @param date
      * @param text
      */
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void updateDiary(LocalDate date, String text) {
         // 첫번째 일기만 수정
         Diary nowDiary = diaryRepository.getFirstByDate(date);
@@ -209,6 +210,7 @@ public class DiaryService {
      * 삭제 (날짜 기준)
      * @param date
      */
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteDiary(LocalDate date) {
         diaryRepository.deleteAllByDate(date);
     }
